@@ -1,0 +1,121 @@
+<div class="update-profile-page">
+  <div class="page-content">
+    <div class="select-avatar">
+      <img
+        src="{{userProfile.userInfo.avatarId | avatarFormatter: false}}"
+        class="img-fluid"
+      />
+      <a
+        href="javascript:void(0);"
+        (click)="selectAvatar()"
+        class="btn-secondary btn-select-avatar"
+        >SELECT AVATAR</a
+      >
+    </div>
+    <div class="label-value-section">
+      <div class="label-value-row">
+        <label>First Name</label> <span>{{ userProfile.firstName }}</span>
+      </div>
+      <div class="label-value-row">
+        <label>Last Name</label> <span> {{ userProfile.lastName }}</span>
+      </div>
+      <div class="label-value-row">
+        <label>Title</label> <span> {{ userProfile.jobTitle }}</span>
+      </div>
+      <div class="label-value-row">
+        <label>Region</label> <span> {{ userProfile.region }}</span>
+      </div>
+    </div>
+    <form class="form-update-profile">
+      <input
+        type="text"
+        id="nickname"
+        placeholder="Nickname"
+        [(ngModel)]="userProfile.userInfo.nickname"
+        name="nickname"
+      />
+      <div class="input-group">
+        <input
+          type="text"
+          id="expertIn"
+          placeholder="I am an Expert in..."
+          [(ngModel)]="userProfile.userInfo.expertIn"
+          name="expertIn"
+        />
+        <a
+          href="javascript:void(0);"
+          (click)="openModal(showExpertInInfoModal)"
+        >
+          <img src="assets/images/icon_info.png" />
+        </a>
+      </div>
+      <div class="input-group">
+        <input
+          type="text"
+          id="onlyHelpYouIf"
+          placeholder="But I will only help you if..."
+          [(ngModel)]="userProfile.userInfo.helpIf"
+          name="helpIf"
+        />
+        <a href="javascript:void(0);" (click)="openModal(showHelpYouIfModal)">
+          <img src="assets/images/icon_info.png" />
+        </a>
+      </div>
+      <p class="description">
+        Please contact Group Coordination if any of the above information is not
+        up to date
+      </p>
+      <a
+        [ngClass]="{ disabled: isConnecting }"
+        href="javascript:void(0);"
+        (click)="updateProfile()"
+        class="btn-primary btn-update-profile"
+        >{{ btnUpdateText }}</a
+      >
+      <a
+        href="javascript:void(0);"
+        (click)="logout()"
+        class="btn-primary btn-logout"
+        >LOG OUT</a
+      >
+    </form>
+    <div class="modal-container" #showExpertInInfoModal>
+      <div class="modal">
+        <div class="modal-body">
+          <p class="description">please list down your areas of expertise</p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(showExpertInInfoModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        (click)="closeModal(showExpertInInfoModal)"
+      ></div>
+    </div>
+    <div class="modal-container" #showHelpYouIfModal>
+      <div class="modal">
+        <div class="modal-body">
+          <p class="description">
+            please mention a fun thing that reflects your personality
+          </p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(showHelpYouIfModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        (click)="closeModal(showHelpYouIfModal)"
+      ></div>
+    </div>
+  </div>
+</div>

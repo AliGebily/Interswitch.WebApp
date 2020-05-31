@@ -1,0 +1,156 @@
+@import '../../../styles.scss';
+
+.calculator-page {
+  .page-content {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 50px;
+    .tabs-buttons {
+      a {
+        float: left;
+        width: 49.95%;
+        border-right: none;
+        padding: 10px;
+        font-size: 1rem;
+        &.active {
+          color: $second-color;
+          background-color: $primary-color;
+          cursor: auto;
+          &:active {
+            border: 1px solid $primary-color;
+            border-right: none;
+            opacity: 1;
+          }
+        }
+      }
+      &::after {
+        @extend .clearfix;
+      }
+    }
+    .tabs-content {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    .section-quarterly-yearly-title,
+    .section-forecast-title {
+      padding: 0px 15px 15px 15px;
+      text-align: center;
+      background-color: $second-color;
+    }
+    .section-quarterly-yearly {
+      margin: 20px 0px;
+      background-color: $eighth-color;
+      .tabs-content {
+        position: relative;
+        svg,
+        .total-sales {
+          margin: 10px 0px;
+          float: left;
+        }
+        .total-sales {
+          color: $tenth-color;
+          position: absolute;
+          @extend .vertical-center;
+          display: inline-block;
+          @extend .wordwrap;
+          width: auto;
+          margin-left: 20px;
+        }
+        @extend .clearfix;
+      }
+    }
+
+    .section-forecast {
+      .section-forecast-subtitle {
+        padding: 10px 15px;
+      }
+      .section-forecast-note {
+        padding: 10px 15px;
+        color: $sixth-color;
+      }
+      .section-forecast-title {
+        letter-spacing: 5px;
+      }
+
+      .form-calculate-transaction-sale,
+      .form-calculate-one-off-sale {
+        padding: 10px 15px;
+        .btn-calculate {
+          margin-top: 10px;
+          width: 80%;
+        }
+      }
+    }
+    .modal-container {
+      .modal {
+        .modal-body {
+          padding-right: 20px;
+          padding-left: 20px;
+          padding-top: 20px;
+          text-align: center;
+          .description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: $sixth-color;
+            span {
+              padding: 10px 0px;
+              font-weight: bold;
+            }
+          }
+          .calculated-value {
+            padding: 20px;
+            margin-bottom: 20px;
+            span {
+              margin: 20px;
+              font-weight: bold;
+              font-size: 1.5rem;
+              padding: 15px;
+              border: 10px solid $primary-color;
+            }
+          }
+          a.icon-close {
+            display: inline-block;
+            border-radius: 50%;
+            img {
+              max-height: 100%;
+            }
+            &:active {
+              border: $primary-color solid 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .calculator-page {
+    .page-content {
+      .tabs-buttons {
+        a {
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 420px) {
+  .calculator-page {
+    .page-content {
+      .section-quarterly-yearly {
+        .tabs-content {
+          .total-sales {
+            display: inline-block;
+            width: auto;
+            margin-left: 20px;
+            top: 45%;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+}

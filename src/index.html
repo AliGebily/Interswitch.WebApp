@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Interswitch Sales App</title>
+    <base href="/" id="base" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      // https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
+      // https://perishablepress.com/3-ways-preload-images-css-javascript-ajax/
+      function preloadImages(resources) {
+        if (!resources) {
+          resources = [];
+        }
+        if (resources.length > 0) {
+          var img = new Image();
+          var base = document.getElementById('base').href + 'assets/';
+          var i = 0;
+          function LoadNext($event, error) {
+            i++;
+            if (resources.length > i) {
+              img.src = base + resources[i];
+            }
+          }
+          img.src = base + resources[i];
+        }
+        img.onload = LoadNext;
+        img.onerror = LoadNext;
+      }
+      preloadImages([
+        'fonts/din/DIN Alternate Bold.ttf',
+        'fonts/din/DIN Alternate Bold.woff',
+        'fonts/din/DIN Alternate Light.ttf',
+        'fonts/din/DIN Alternate Light.woff',
+        'fonts/din/DIN Alternate Medium.ttf',
+        'fonts/din/DIN Alternate Medium.woff',
+        'fonts/din/DIN Alternate.ttf',
+        'fonts/din/DIN Alternate.woff',
+        'fonts/din/DIN RegularAlternate.ttf',
+        'fonts/din/DIN RegularAlternate.woff',
+        'fonts/din/DIN Schablonierschrift.ttf',
+        'fonts/din/DIN-Black.ttf',
+        'fonts/din/DIN-Black.woff',
+        'fonts/din/DIN.ttf',
+        'fonts/din/DIN.woff',
+        'images/avatars_group.png',
+        'images/button_calculate.png',
+        'images/button_customize_active.png',
+        'images/button_customize_inactive.png',
+        'images/button_done.png',
+        'images/button_quartarly_active.png',
+        'images/button_quartarly_inactive.png',
+        'images/button_register.png',
+        'images/button_selectavatar.png',
+        'images/button_signin.png',
+        'images/button_yearly_active.png',
+        'images/button_yearly_inactive.png',
+        'images/circle_active.png',
+        'images/circle_inactive.png',
+        'images/close.png',
+        'images/hide_password.png',
+        'images/icon_arrow_down.png',
+        'images/icon_arrow_up.png',
+        'images/icon_back.png',
+        'images/icon_calculator.png',
+        'images/icon_calculator_white.png',
+        'images/icon_Home.png',
+        'images/icon_home_white.png',
+        'images/icon_info.png',
+        'images/icon_medals.png',
+        'images/icon_medals_white.png',
+        'images/icon_messages.png',
+        'images/icon_messages_white.png',
+        'images/icon_ranking.png',
+        'images/icon_ranking_white.png',
+        'images/ic_warning.png',
+        'images/interswitch_logo_small.png',
+        'images/Logo_flash.png',
+        'images/notification.png',
+        'images/refresh.png',
+        'images/show_password.png',
+        'images/splash.png',
+        'images/avatars/large/character_00.png',
+        'images/avatars/large/character_02.png',
+        'images/avatars/large/character_09.png',
+        'images/avatars/large/character_10.png',
+        'images/avatars/large/character_11.png',
+        'images/avatars/large/character_12.png',
+        'images/avatars/large/character_14.png',
+        'images/avatars/large/character_15.png',
+        'images/avatars/large/character_16.png',
+        'images/avatars/large/character_17.png',
+        'images/avatars/large/character_21.png',
+        'images/avatars/large/character_23.png',
+        'images/avatars/large/character_24.png',
+        'images/avatars/large/character_26.png',
+        'images/avatars/large/character_27.png',
+        'images/avatars/large/character_28.png',
+        'images/avatars/large/character_29.png',
+        'images/avatars/large/character_30.png',
+        'images/avatars/large/character_31.png',
+        'images/avatars/large/character_32.png',
+        'images/avatars/large/character_34.png',
+        'images/avatars/large/character_35.png',
+        'images/avatars/large/character_36.png',
+        'images/avatars/large/character_37.png',
+        'images/avatars/large/character_38.png',
+        'images/avatars/large/character_39.png',
+        'images/avatars/large/character_40.png',
+        'images/avatars/large/character_41.png',
+        'images/avatars/large/character_42.png',
+        'images/avatars/large/character_43.png',
+        'images/avatars/large/character_44.png',
+        'images/avatars/large/character_45.png',
+        'images/avatars/large/character_46.png',
+        'images/avatars/large/character_47.png',
+        'images/avatars/large/character_48.png',
+        'images/avatars/large/character_49.png',
+        'images/avatars/small/character_00_mask.png',
+        'images/avatars/small/character_02_mask.png',
+        'images/avatars/small/character_09_mask.png',
+        'images/avatars/small/character_10_mask.png',
+        'images/avatars/small/character_11_mask.png',
+        'images/avatars/small/character_12_mask.png',
+        'images/avatars/small/character_14_mask.png',
+        'images/avatars/small/character_15_mask.png',
+        'images/avatars/small/character_16_mask.png',
+        'images/avatars/small/character_17_mask.png',
+        'images/avatars/small/character_21_mask.png',
+        'images/avatars/small/character_23_mask.png',
+        'images/avatars/small/character_24_mask.png',
+        'images/avatars/small/character_26_mask.png',
+        'images/avatars/small/character_27_mask.png',
+        'images/avatars/small/character_28_mask.png',
+        'images/avatars/small/character_29_mask.png',
+        'images/avatars/small/character_30_mask.png',
+        'images/avatars/small/character_31_mask.png',
+        'images/avatars/small/character_32_mask.png',
+        'images/avatars/small/character_34_mask.png',
+        'images/avatars/small/character_35_mask.png',
+        'images/avatars/small/character_36_mask.png',
+        'images/avatars/small/character_37_mask.png',
+        'images/avatars/small/character_38_mask.png',
+        'images/avatars/small/character_39_mask.png',
+        'images/avatars/small/character_40_mask.png',
+        'images/avatars/small/character_41_mask.png',
+        'images/avatars/small/character_42_mask.png',
+        'images/avatars/small/character_43_mask.png',
+        'images/avatars/small/character_44_mask.png',
+        'images/avatars/small/character_45_mask.png',
+        'images/avatars/small/character_46_mask.png',
+        'images/avatars/small/character_47_mask.png',
+        'images/avatars/small/character_48_mask.png',
+        'images/avatars/small/character_49_mask.png',
+        'images/medals/exceptional_large.png',
+        'images/medals/exceptional_medium.png',
+        'images/medals/exceptional_medium_disabled.png',
+        'images/medals/exceptional_small.png',
+        'images/medals/getmemymoney_large.png',
+        'images/medals/getmemymoney_medium.png',
+        'images/medals/getmemymoney_medium_disabled.png',
+        'images/medals/getmemymoney_small.png',
+        'images/medals/hotstuff_large.png',
+        'images/medals/hotstuff_medium.png',
+        'images/medals/hotstuff_medium_disabled.png',
+        'images/medals/hotstuff_small.png',
+        'images/medals/newarrival_large.png',
+        'images/medals/newarrival_medium.png',
+        'images/medals/newarrival_medium_disabled.png',
+        'images/medals/newarrival_small.png',
+        'images/medals/thearcher_large.png',
+        'images/medals/thearcher_medium.png',
+        'images/medals/thearcher_medium_disabled.png',
+        'images/medals/thearcher_small.png',
+        'images/medals/thechief_large.png',
+        'images/medals/thechief_medium.png',
+        'images/medals/thechief_medium_disabled.png',
+        'images/medals/thechief_small.png',
+        'images/medals/thecollector_large_1of6.png',
+        'images/medals/thecollector_large_2of6.png',
+        'images/medals/thecollector_large_3of6.png',
+        'images/medals/thecollector_large_4of6.png',
+        'images/medals/thecollector_large_5of6.png',
+        'images/medals/thecollector_large_6of6.png',
+        'images/medals/thecollector_medium_1of6.png',
+        'images/medals/thecollector_medium_2of6.png',
+        'images/medals/thecollector_medium_3of6.png',
+        'images/medals/thecollector_medium_4of6.png',
+        'images/medals/thecollector_medium_5of6.png',
+        'images/medals/thecollector_medium_6of6.png',
+        'images/medals/thecollector_medium_disabled.png',
+        'images/medals/thecollector_small.png',
+        'images/medals/thegatherer_large_1of6.png',
+        'images/medals/thegatherer_large_2of6.png',
+        'images/medals/thegatherer_large_3of6.png',
+        'images/medals/thegatherer_large_4of6.png',
+        'images/medals/thegatherer_large_5of6.png',
+        'images/medals/thegatherer_large_6of6.png',
+        'images/medals/thegatherer_medium_1of6.png',
+        'images/medals/thegatherer_medium_2of6.png',
+        'images/medals/thegatherer_medium_3of6.png',
+        'images/medals/thegatherer_medium_4of6.png',
+        'images/medals/thegatherer_medium_5of6.png',
+        'images/medals/thegatherer_medium_6of6.png',
+        'images/medals/thegatherer_medium_disabled.png',
+        'images/medals/thegatherer_small.png',
+        'images/medals/theslow_large.png',
+        'images/medals/theslow_medium.png',
+        'images/medals/theslow_medium_disabled.png',
+        'images/medals/theslow_small.png',
+        'images/medals/thetall_large_1.png',
+        'images/medals/thetall_large_2.png',
+        'images/medals/thetall_large_3.png',
+        'images/medals/thetall_medium.png',
+        'images/medals/thetall_medium_1.png',
+        'images/medals/thetall_medium_2.png',
+        'images/medals/thetall_medium_3.png',
+        'images/medals/thetall_medium_disabled.png',
+        'images/medals/thetall_small.png'
+      ]);
+    </script>
+    <!-- App Splash Screen CSS -->
+    <style type="text/css">
+      #splash-screen {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #f7f7f7;
+        z-index: 99999;
+        pointer-events: none;
+      }
+
+      #splash-screen .center {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      #splash-screen .logo {
+        width: 128px;
+        margin: 0 auto;
+      }
+      #splash-screen .logo img {
+        filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2));
+      }
+
+      #splash-screen .spinner-wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+        min-height: 50px;
+        height: 50px;
+      }
+
+      #splash-screen .spinner-wrapper .spinner {
+        position: absolute;
+        overflow: hidden;
+        left: 50%;
+        margin-left: -25px;
+        animation: outer-rotate 2.91667s linear infinite;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .gap {
+        position: absolute;
+        left: 25px;
+        right: 25px;
+        top: 0;
+        bottom: 0;
+        border-top: 10px solid;
+        box-sizing: border-box;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .left,
+      #splash-screen .spinner-wrapper .spinner .inner .right {
+        position: absolute;
+        top: 0;
+        height: 50px;
+        width: 25px;
+        overflow: hidden;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .left .half-circle,
+      #splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border: 5px solid #00405c;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .left {
+        left: 0;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .left .half-circle {
+        left: 0;
+        border-right-color: transparent;
+        animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+        -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1)
+          infinite;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .right {
+        right: 0;
+      }
+
+      #splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+        right: 0;
+        border-left-color: transparent;
+        animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+        -webkit-animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1)
+          infinite;
+      }
+
+      @keyframes outer-rotate {
+        0% {
+          transform: rotate(0deg) scale(0.5);
+        }
+        100% {
+          transform: rotate(360deg) scale(0.5);
+        }
+      }
+
+      @keyframes left-wobble {
+        0%,
+        100% {
+          transform: rotate(130deg);
+        }
+        50% {
+          transform: rotate(-5deg);
+        }
+      }
+
+      @keyframes right-wobble {
+        0%,
+        100% {
+          transform: rotate(-130deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+      }
+
+      @keyframes sporadic-rotate {
+        12.5% {
+          transform: rotate(135deg);
+        }
+        25% {
+          transform: rotate(270deg);
+        }
+        37.5% {
+          transform: rotate(405deg);
+        }
+        50% {
+          transform: rotate(540deg);
+        }
+        62.5% {
+          transform: rotate(675deg);
+        }
+        75% {
+          transform: rotate(810deg);
+        }
+        87.5% {
+          transform: rotate(945deg);
+        }
+        100% {
+          transform: rotate(1080deg);
+        }
+      }
+    </style>
+    <!-- /  Splash Screen CSS -->
+  </head>
+
+  <body class="primary-800-bg">
+    <!-- Splash Screen -->
+    <splash-screen id="splash-screen">
+      <div class="center">
+        <div class="logo">
+          <img width="128" src="assets/images/splash.png" />
+        </div>
+        <!-- Material Design Spinner -->
+        <div class="spinner-wrapper">
+          <div class="spinner">
+            <div class="inner">
+              <div class="gap"></div>
+              <div class="left"><div class="half-circle"></div></div>
+              <div class="right"><div class="half-circle"></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- / Material Design Spinner -->
+      </div>
+    </splash-screen>
+    <!-- /  Splash Screen -->
+
+    <app-root></app-root>
+  </body>
+</html>

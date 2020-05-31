@@ -1,0 +1,27 @@
+:host {
+  #error-404 {
+    width: 100%;
+    overflow: auto;
+
+    .content {
+      width: 90%;
+      .error-code {
+        font-size: 72px;
+        text-align: center;
+        line-height: 1;
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+
+      .message {
+        font-size: 20px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+  .report-link {
+    text-align: center;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,70 @@
+<div class="view-profile-page">
+  <div class="page-content">
+    <div class="basic-info-container">
+      <a href="javascript:void(0);" (click)="updateProfile()">
+        <img
+          src="{{userProfile.userInfo?.avatarId | avatarFormatter: false}}"
+          class="img-fluid"
+        />
+      </a>
+      <div class="basic-info-details">
+        <h1>{{ userProfile.userInfo?.nickname || 'N/A' }}</h1>
+        <div class="lbl-basic-info">
+          {{ userProfile.firstName + ' ' + userProfile.lastName }}
+        </div>
+        <div class="lbl-basic-info">{{ userProfile.jobTitle }}</div>
+        <div class="lbl-basic-info">{{ userProfile.region }}</div>
+      </div>
+    </div>
+    <div class="more-info">
+      <div class="description">
+        I am an expert in
+        <span>{{ userProfile.userInfo?.expertIn || 'N/A' }}.</span>
+      </div>
+      <div class="description">
+        But I will only help you if
+        <span>{{ userProfile.userInfo?.helpIf || 'N/A' }}.</span>
+      </div>
+    </div>
+    <div class="medals-grid" *ngIf="medals && medals.length > 0">
+      <a
+        href="javascript:void(0);"
+        (click)="openMedalDetails(medal, medalDetailsModal)"
+        *ngFor="let medal of medals"
+      >
+        <div class="img-container">
+          <img src="{{medal.id | medalFormatter}}" />
+        </div>
+        <div>{{ medal.title }}</div>
+        <div class="description">{{ medal.description }}</div>
+      </a>
+    </div>
+    <div class="empty-medals" *ngIf="!medals || medals.length == 0">
+      No medals yet!
+    </div>
+
+    <div class="modal-container" #medalDetailsModal>
+      <div class="modal" *ngIf="currentMedal">
+        <div class="modal-body">
+          <img
+            src="{{currentMedal.id| medalFormatter: false: false}}"
+            class="medal-image"
+          />
+          <h1 class="title">{{ currentMedal.title }}</h1>
+          <p class="details">
+            {{ currentMedal.description }}
+          </p>
+          <p class="repeat">{{ currentMedal.repeat }}</p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(medalDetailsModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div class="modal-backdrop" (click)="closeModal(medalDetailsModal)"></div>
+    </div>
+  </div>
+</div>

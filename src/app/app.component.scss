@@ -1,0 +1,82 @@
+@import '../styles.scss';
+
+.page-container {
+  .spinner-wrapper {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    max-width: $max-screen-width;
+    margin: auto;
+    // background: #f3f3f3;
+    z-index: 10000;
+    top: 10px;
+    right: 5px;
+    .spinner {
+      border-bottom: 3px solid transparent;
+      border-right: 3px solid #00405c;
+      border-top: 3px solid #00405c;
+      border-left: 3px solid #00405c;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      animation: spin 2s linear infinite;
+
+      position: absolute;
+      top: 5px;
+      left: 10px;
+    }
+
+    .refresh {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      &:active {
+        border: $primary-color solid 1px;
+        border-radius: 50%;
+      }
+      img {
+        padding: 5px;
+      }
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .notification-modal {
+    .modal-container {
+      .modal {
+        .modal-body {
+          padding-right: 20px;
+          padding-left: 20px;
+          padding-top: 50px;
+          text-align: center;
+          .medal-image {
+            display: block;
+            margin: 20px auto 0px auto;
+            max-width: 95%;
+          }
+          .title {
+            padding: 5px 0px;
+          }
+          a.icon-close {
+            display: inline-block;
+            border-radius: 50%;
+            img {
+              max-height: 100%;
+            }
+            &:active {
+              border: $primary-color solid 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

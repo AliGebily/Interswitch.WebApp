@@ -1,0 +1,43 @@
+<div class="login-page">
+  <div class="page-content">
+    <div class="section-1">
+      <img src="assets/images/avatars_group.png" class="img-fluid img-center" />
+      <h1 class="lbl-welcome">WELCOME</h1>
+    </div>
+    <form class="form-signin">
+      <div>
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          [(ngModel)]="username"
+          name="username"
+        />
+      </div>
+      <div class="input-group">
+        <input
+          [type]="passwordField.type"
+          id="pwd"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+        />
+
+        <a href="javascript:void(0);" (click)="ChangePasswordFieldType()">
+          <img src="assets/images/{{passwordField.icon}}" />
+        </a>
+      </div>
+      <img
+        src="assets/images/interswitch_logo_small.png"
+        class="img-center logo"
+      />
+      <a
+        [ngClass]="{ disabled: isConnecting }"
+        href="javascript:void(0);"
+        (click)="signIn()"
+        class="btn-primary btn-signin"
+        >SIGN IN</a
+      >
+    </form>
+  </div>
+</div>

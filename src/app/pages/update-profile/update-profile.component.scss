@@ -1,0 +1,85 @@
+@import '../../../styles.scss';
+
+.update-profile-page {
+  .select-avatar {
+    position: relative;
+    margin-top:20px; 
+    img {
+      max-height: 120px;
+    }
+    .btn-select-avatar {
+      position: absolute;
+      right: 0px;
+      bottom: 15px;
+      width: 50%;
+      float: right;
+    }
+  }
+  .label-value-section {
+    padding-top: 15px;
+    .label-value-row {
+      padding-bottom: 5px;
+      label,
+      span {
+        float: left;
+        width: 50%;
+      }
+      label {
+        padding-left: 0px;
+        color: $sixth-color;
+      }
+      &:after {
+        @extend .clearfix;
+      }
+    }
+  }
+  .form-update-profile {
+    padding-top: 20px;
+    text-align: center;
+    .input-group {
+      position: relative;
+      a {
+        display: block;
+        position: absolute;
+        right: 10px;
+        @extend .vertical-center;
+      }
+      input {
+        padding-right: 85px; //icon width+right position of icon
+      }
+    }
+    .description {
+      text-align: left;
+      padding-left: 40px;
+      margin: 20px 0px;
+    }
+    .btn-update-profile,
+    .btn-logout {
+      margin-top: 20px;
+      width: 80%;
+    }
+  }
+  .modal-container {
+    .modal {
+      .modal-body {
+        position: relative;
+        padding-right: 50px; // close-icon width+ right position + extra safe value
+        padding-left: 10px;
+        min-height: 50px;
+        a.icon-close {
+          display: block;
+          position: absolute;
+          @extend .vertical-center;
+          right: 10px;
+          border-radius: 50%;
+          img {
+            max-height: 100%;
+          }
+          &:active {
+            border: $primary-color solid 1px;
+          }
+        }
+      }
+    }
+  }
+}

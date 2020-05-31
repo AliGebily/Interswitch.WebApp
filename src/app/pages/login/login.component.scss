@@ -1,0 +1,45 @@
+@import '../../../styles.scss';
+
+.login-page {
+  .section-1 {
+    position: relative;
+    .lbl-welcome {
+      color: $sixth-color;
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      font-size: 6vw;
+      font-weight: lighter;
+      text-align: center;
+    }
+    padding-bottom: 20px;
+  }
+  .form-signin {
+    text-align: center;
+    .input-group {
+      position: relative;
+      a {
+        display: block;
+        position: absolute;
+        right: 10px;
+        @extend .vertical-center;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      input {
+        padding-right: 85px; //icon width+right position of icon
+      }
+    }
+    img.logo {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      max-width: 60%;
+      height: auto;
+    }
+    .btn-signin {
+      width: 80%;
+    }
+  }
+}

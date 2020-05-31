@@ -1,0 +1,118 @@
+@import '../../../styles.scss';
+
+.view-profile-page {
+  .page-content {
+    padding-left: 0px;
+    padding-right: 0px;
+    .basic-info-container {
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-top: 20px;
+      position: relative;
+      img {
+        max-height: 120px;
+      }
+      .basic-info-details {
+        display: inline-block;
+        margin-left: 30px;
+        position: absolute;
+        @extend .vertical-center;
+        h1 {
+          padding-bottom: 15px;
+        }
+        .lbl-basic-info {
+          padding-bottom: 5px;
+        }
+      }
+    }
+    .more-info {
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 20px;
+      .description {
+        font-size: 1.3em;
+        span {
+          color: $primary-color;
+        }
+      }
+    }
+    .empty-medals {
+      margin-top: 50px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .medals-grid {
+      border-top: 1px solid $fourth-color;
+      a:nth-child(odd) {
+        border-right: 1px solid $fourth-color;
+      }
+      a {
+        display: block;
+        float: left;
+        width: 49.9%;
+        height: 330px;
+        padding: 10px 5px;
+        white-space: normal;
+        text-decoration: none;
+        text-align: center;
+        overflow: hidden;
+        font-size: 1.0rem;
+        color: $primary-color;
+        border-bottom: 1px solid $fourth-color;
+        .img-container {
+          height: 230px;
+          position: relative;
+          img {
+            display: inline;
+            position: absolute;
+            @extend .horizontal-vertical-center;
+            max-width: 95%;
+            max-height: 100%;
+          }
+        }
+        .description {
+          font-size: 1rem;
+        }
+      }
+      &:after {
+        @extend .clearfix;
+      }
+    }
+    .modal-container {
+      .modal {
+        .modal-body {
+          padding-right: 20px;
+          padding-left: 20px;
+          padding-top: 50px;
+          text-align: center;
+          .medal-image {
+            display: block;
+            margin: 20px auto 0px auto;
+            max-width: 95%;
+            height: 230px;
+          }
+          .title {
+            padding: 5px 0px;
+          }
+          .details {
+            margin: 5px;
+          }
+          .repeat {
+            margin: 15px;
+            color: $sixth-color;
+          }
+          a.icon-close {
+            display: inline-block;
+            border-radius: 50%;
+            img {
+              max-height: 100%;
+            }
+            &:active {
+              border: $primary-color solid 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

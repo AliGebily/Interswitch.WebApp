@@ -1,0 +1,177 @@
+@import '../../../styles.scss';
+
+.ranking-page {
+  .page-content {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 50px;
+    .tabs-buttons {
+      a {
+        float: left;
+        width: 50%;
+        border-right: none;
+        padding: 10px;
+        font-size: 1rem;
+        &.active {
+          color: $second-color;
+          background-color: $primary-color;
+          cursor: auto;
+          &:active {
+            border: 1px solid $primary-color;
+            border-right: none;
+            opacity: 1;
+          }
+        }
+      }
+      &::after {
+        @extend .clearfix;
+      }
+    }
+    .filter {
+      .scope-dropdown {
+        float: left;
+        width: 66.7%;
+        position: relative;
+        a {
+          display: block;
+          width: 100%;
+          border: none;
+          border-bottom: 2px solid $primary-color;
+          padding: 10px;
+          text-align: center;
+          font-size: 1.1rem;
+          &.dropbtn {
+            position: relative;
+            border-right: 2px solid $primary-color;
+          }
+          .select-icon-down,
+          .select-icon-up {
+            position: absolute;
+            right: 7%;
+            width: 30px;
+            @extend .vertical-center;
+          }
+          .select-icon-up {
+            display: none;
+          }
+          .select-icon-down {
+            display: inline;
+          }
+        }
+        .dropdown-content {
+          display: none;
+          width: 100%;
+          position: absolute;
+          z-index: 1;
+          border-left: 2px solid transparent;
+          border-right: 2px solid $primary-color;
+          border-bottom: 2px solid $primary-color;
+          background-color: $second-color;
+          a {
+            background-color: $third-color;
+            border-bottom: none;
+            margin-top: 2px;
+            color: $sixth-color;
+            &.all {
+              background-color: $second-color;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+      .result-type-options {
+        font-size: 1.1rem;
+        white-space: nowrap;
+        word-spacing: -5px;
+        float: left;
+        width: 33%;
+        text-align: center;
+      }
+      @extend .clearfix;
+    }
+    .tabs-content {
+      ul {
+        list-style-type: none;
+        padding-left: 0px;
+        li {
+          display: block;
+          padding: 10px 0px;
+          border-bottom: 1px solid $fourth-color;
+          position: relative;
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          .avatar-thumbnail {
+            display: block;
+            position: absolute;
+            left: 5px;
+            @extend .vertical-center;
+            max-height: 80%;
+            max-width: 50px;
+          }
+          .title {
+            padding: 5px 60px;
+          }
+          .target {
+            padding: 5px 60px;
+            color: $tenth-color;
+          }
+          .rank {
+            position: absolute;
+            right: 15px;
+            @extend .vertical-center;
+            background-color: $tenth-color;
+            color: $second-color;
+            padding: 15px;
+          }
+        }
+      }
+      .btn-try-again {
+        margin-top: 20px;
+        width: 80%;
+      }
+    }
+  }
+
+  .modal-container {
+    .modal {
+      .modal-body {
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 20px;
+        text-align: center;
+        .title {
+          padding: 5px 0px;
+        }
+        .details {
+          margin: 15px;
+          color: $sixth-color;
+        }
+        a.icon-close {
+          display: inline-block;
+          border-radius: 50%;
+          img {
+            max-height: 100%;
+          }
+          &:active {
+            border: $primary-color solid 1px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .ranking-page {
+    .page-content {
+      .tabs-buttons {
+        a {
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+}

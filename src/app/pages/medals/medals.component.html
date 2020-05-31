@@ -1,0 +1,38 @@
+<div class="medals-page">
+  <div class="page-content">
+    <div class="medals-grid">
+      <a
+        href="javascript:void(0);"
+        (click)="openMedalDetails(medal, medalDetailsModal)"
+        *ngFor="let medal of medals"
+      >
+        <div class="img-container">
+          <img src="{{medal.id| medalFormatter: false: !medal.userWonIt}}" />
+        </div>
+        <div>{{ medal.title }}</div>
+        <div class="description">{{ medal.description }}</div>
+      </a>
+    </div>
+
+    <div class="modal-container" #medalDetailsModal>
+      <div class="modal" *ngIf="currentMedal">
+        <div class="modal-body">
+          <img src="{{currentMedal.id| medalFormatter: false: !currentMedal.userWonIt}}" class="medal-image" />
+          <h1 class="title">{{ currentMedal.title }}</h1>
+          <p class="details">
+            {{ currentMedal.moreDetails || currentMedal.description }}
+          </p>
+          <p class="repeat">{{ currentMedal.repeat }}</p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(medalDetailsModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div class="modal-backdrop" (click)="closeModal(medalDetailsModal)"></div>
+    </div>
+  </div>
+</div>

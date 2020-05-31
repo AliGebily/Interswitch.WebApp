@@ -1,0 +1,130 @@
+<div class="ranking-page">
+  <div class="page-content">
+    <div class="tabs-buttons">
+      <a
+        href="javascript:void(0);"
+        class="btn-secondary active"
+        (click)="showTab(quarterlyTabButton, 'Q')"
+        #quarterlyTabButton
+        >QUARTERLY</a
+      >
+      <a
+        href="javascript:void(0);"
+        class="btn-secondary"
+        (click)="showTab(yearlyTabButton, 'Y')"
+        #yearlyTabButton
+        >YEARLY</a
+      >
+    </div>
+    <div class="filter">
+      <div class="scope-dropdown">
+        <a
+          href="javascript:void(0);"
+          class="dropbtn btn-secondary"
+          (click)="
+            toggleDropdownContent(dropdownContent, downArrow, upArrow)
+          "
+        >
+          {{ criteriaFilter.rankingFilter?.filterName || 'SELECT' }}
+          <img
+            src="assets/images/icon_arrow_down.png"
+            class="img-fluid select-icon-down"
+            #downArrow
+          />
+          <img
+            src="assets/images/icon_arrow_up.png"
+            class="img-fluid select-icon-up"
+            #upArrow
+          />
+        </a>
+        <div class="dropdown-content" #dropdownContent>
+          <a
+            *ngFor="let rankingFilter of rankingsFilters"
+            href="javascript:void(0);"
+            class="btn-secondary"
+            (click)="
+              filterUsers(dropdownContent, downArrow, upArrow, rankingFilter)
+            "
+            >{{ rankingFilter.filterName }}</a
+          >
+          <a
+            href="javascript:void(0);"
+            class="btn-secondary all"
+            (click)="filterUsers(dropdownContent, downArrow, upArrow, null)"
+            >All</a
+          >
+        </div>
+      </div>
+      <div class="result-type-options">
+        %
+        <label class="switch">
+          <input
+            type="checkbox"
+            [checked]="criteriaFilter.useCurrency"
+            (change)="changeComparingMethod()"
+            [disabled]="!criteriaFilter.rankingFilter?.canShowCurrency"
+          />
+          <span class="slider round"></span>
+        </label>
+        &#x20a6;
+      </div>
+    </div>
+    <div class="tabs-content">
+      <ul *ngIf="filteredRankingResult.length > 0">
+        <li *ngFor="let ranking of filteredRankingResult; let index = index">
+          <a href="javascript:void(0);" (click)="viewProfile(ranking.profile)">
+            <img
+              class="avatar-thumbnail"
+              src="{{ranking.profile.userInfo?.avatarId | avatarFormatter: true}}"
+            />
+            <h1 class="title">
+              {{
+                ranking.profile.userInfo?.nickname ||
+                  ranking.profile.firstName + ' ' + ranking.profile.lastName
+              }}
+            </h1>
+            <div class="target">
+              Target: {{ ranking.profile.userData?.fieldToSortByValue }}
+              {{ criteriaFilter.useCurrency ? '&#x20a6;' : '%' }}
+            </div>
+            <span class="rank">0{{ index + 1 }}</span>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="filteredRankingResult.length == 0">
+        <img
+          src="assets/images/avatars_group.png"
+          class="img-fluid img-center"
+        />
+        <a
+          href="javascript:void(0);"
+          (click)="refreshHandler()"
+          class="btn-primary btn-try-again"
+          >TRY AGAIN</a
+        >
+      </div>
+    </div>
+    <div class="modal-container" #permissionErrorModal>
+      <div class="modal">
+        <div class="modal-body">
+          <h1 class="title">ERROR</h1>
+          <p class="description">
+            You are not permitted to see this list, please contact Admin for
+            more details.
+          </p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(permissionErrorModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        (click)="closeModal(permissionErrorModal)"
+      ></div>
+    </div>
+  </div>
+</div>

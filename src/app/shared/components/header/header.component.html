@@ -1,0 +1,46 @@
+<div class="page-header">
+  <a class="btn-side-menu" href="javascript:void(0);" (click)="toggleMenu(menuItems)">
+    <div class="btn-side-menu-line"></div>
+    <div class="btn-side-menu-line"></div>
+    <div class="btn-side-menu-line"></div>
+  </a>
+  <h1 class="app-title">{{title}}</h1>
+</div>
+<ul class="side-menu-items" #menuItems>
+  <li>
+    <a href="javascript:void(0);" routerLink="/view-profile" routerLinkActive="active" class="btn-secondary profile-link">
+      <img class="inactive-img" src="assets/images/icon_Home.png">
+      <img class="active-img" src="assets/images/icon_home_white.png">
+      <div>Profile</div>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" routerLink="/medals" routerLinkActive="active" class="btn-secondary medals-link">
+      <img class="inactive-img" src="assets/images/icon_medals.png">
+      <img class="active-img" src="assets/images/icon_medals_white.png">
+      <div>Medals</div>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" routerLink="/ranking" routerLinkActive="active" class="btn-secondary ranking-link">
+      <img class="inactive-img" src="assets/images/icon_ranking.png">
+      <img class="active-img" src="assets/images/icon_ranking_white.png">
+      <div>Ranking</div>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" routerLink="/calculator" routerLinkActive="active" class="btn-secondary calculator-link">
+      <img class="inactive-img" src="assets/images/icon_calculator.png">
+      <img class="active-img" src="assets/images/icon_calculator_white.png">
+      <div>Calculator</div>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:void(0);" routerLink="/notifications" routerLinkActive="active" class="btn-secondary notifications-link">
+      <img class="inactive-img" src="assets/images/icon_messages.png">
+      <img class="active-img" src="assets/images/icon_messages_white.png">
+      <!-- <img class="notification active-img" src="assets/images/notification.png"> -->
+      <div>Messages</div>
+    </a>
+  </li>
+</ul>

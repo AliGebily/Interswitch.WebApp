@@ -1,0 +1,82 @@
+@import '../../../styles.scss';
+
+.medals-page {
+  .page-content {
+    padding-top: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .medals-grid {
+    a:nth-child(odd) {
+      border-right: 1px solid $fourth-color;
+    }
+    a {
+      display: block;
+      float: left;
+      width: 49.9%;
+      height: 330px;
+      padding: 10px 5px;
+      white-space: normal;
+      text-decoration: none;
+      text-align: center;
+      overflow: hidden;
+      font-size: 1rem;
+      color: $primary-color;
+      border-bottom: 1px solid $fourth-color;
+
+      .img-container {
+        height: 230px;
+        position: relative;
+        img {
+          display: inline;
+          position: absolute;
+          @extend .horizontal-vertical-center;
+          max-width: 95%;
+          max-height: 100%;
+        }
+      }
+      .description {
+        font-size: 1rem;
+      }
+    }
+    &:after {
+      @extend .clearfix;
+    }
+  }
+  .modal-container {
+    .modal {
+      .modal-body {
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 50px;
+        text-align: center;
+        .medal-image {
+          display: block;
+          margin: 20px auto 0px auto;
+          max-width: 95%;
+          height: 230px;
+        }
+        .title {
+          padding: 5px 0px;
+        }
+        .details {
+          margin: 5px;
+        }
+        .repeat {
+          margin: 15px;
+          color: $sixth-color;
+        }
+        a.icon-close {
+          display: inline-block;
+          border-radius: 50%;
+          img {
+            max-height: 100%;
+          }
+          &:active {
+            border: $primary-color solid 1px;
+          }
+        }
+      }
+    }
+  }
+}

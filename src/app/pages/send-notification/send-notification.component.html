@@ -1,0 +1,50 @@
+<div class="send-notification-page">
+  <div class="page-content">
+    <h1 class="title">SEND NOTIFICATION</h1>
+    <textarea class="content" [(ngModel)]="body"></textarea>
+    <div class="receiver-dropdown">
+      <a
+        href="javascript:void(0);"
+        class="dropbtn btn-secondary"
+        (click)="toggleSelect(dropdownContent, downArrow, upArrow, null)"
+      >
+        {{ selectedFilter?.filterName || 'SELECT' }}
+        <img
+          src="assets/images/icon_arrow_down.png"
+          class="img-fluid select-icon-down"
+          #downArrow
+        />
+        <img
+          src="assets/images/icon_arrow_up.png"
+          class="img-fluid select-icon-up"
+          #upArrow
+        />
+      </a>
+      <div class="dropdown-content" #dropdownContent>
+        <a
+          *ngFor="let notificationsFilter of notificationsFilters"
+          href="javascript:void(0);"
+          class="btn-secondary"
+          (click)="
+            toggleSelect(
+              dropdownContent,
+              downArrow,
+              upArrow,
+              notificationsFilter
+            )
+          "
+          >{{ notificationsFilter.filterName }}</a
+        >
+      </div>
+    </div>
+    <div class="btn-container">
+      <a
+        [ngClass]="{ disabled: isConnecting }"
+        href="javascript:void(0);"
+        class="btn-primary btn-send-notification"
+        (click)="sendNotification()"
+        >SEND</a
+      >
+    </div>
+  </div>
+</div>

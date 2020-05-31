@@ -1,0 +1,48 @@
+<div class="select-avatar-page">
+  <div class="page-content">
+    <div class="images-grid">
+      <a
+        href="javacript:;"
+        (click)="selectAvatar(avatar)"
+        *ngFor="let avatar of avatars; let i = index"
+        [ngClass]="{
+          selected: avatar.id == selectedavatarId,
+          show: selectedSlideIndex === floor(i / 12)
+        }"
+      >
+        <picture>
+          <source
+            media="(min-width: 960px)"
+            srcset="{{avatar.id | avatarFormatter: false}}"
+          />
+          <img src="{{avatar.id | avatarFormatter: false}}" alt="avatar" />
+        </picture>
+      </a>
+      <div class="dots-container">
+        <span
+          class="dot"
+          [ngClass]="{ active: selectedSlideIndex === 0 }"
+          (click)="setCurrentSlide(0)"
+        ></span>
+        <span
+          class="dot"
+          [ngClass]="{ active: selectedSlideIndex === 1 }"
+          (click)="setCurrentSlide(1)"
+        ></span>
+        <span
+          class="dot"
+          [ngClass]="{ active: selectedSlideIndex === 2 }"
+          (click)="setCurrentSlide(2)"
+        ></span>
+      </div>
+    </div>
+    <div class="btn-container">
+      <a
+        href="javascript:void(0);"
+        (click)="updateAvatar()"
+        class="btn-primary btn-done"
+        >DONE</a
+      >
+    </div>
+  </div>
+</div>

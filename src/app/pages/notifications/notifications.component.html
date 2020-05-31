@@ -1,0 +1,195 @@
+<div class="notifications-page">
+  <div class="page-content">
+    <div class="tabs-buttons">
+      <a
+        href="javascript:void(0);"
+        class="btn-secondary active"
+        (click)="showTab(inboxTabButton, inboxSentTabContent, 'INBOX')"
+        #inboxTabButton
+        >INBOX</a
+      >
+      <a
+        href="javascript:void(0);"
+        class="btn-secondary"
+        (click)="showTab(sentTabButton, inboxSentTabContent, 'SENT')"
+        #sentTabButton
+        >SENT</a
+      >
+      <a
+        href="javascript:void(0);"
+        class="btn-secondary"
+        (click)="showTab(overviewTabButton, overviewTabContent, null)"
+        #overviewTabButton
+        >OVERVIEW</a
+      >
+    </div>
+    <div class="tabs-content">
+      <div class="inboxSentTab" #inboxSentTabContent>
+        <a
+          *ngIf="criteriaFilter.notificationsType == 'INBOX'"
+          href="javascript:void(0);"
+          (click)="openSendNotification()"
+          class="btn-secondary btn-send-notification"
+          >SEND NOTIFICATION</a
+        >
+        <ul
+          class="notificationsInboxList"
+          *ngIf="notifications && notifications.length > 0"
+        >
+          <li
+            *ngFor="let notification of notifications; let index = index"
+            [ngClass]="{ selected: notification.selected }"
+          >
+            <a
+              href="javascript:void(0);"
+              (click)="selectNotification(notification)"
+            >
+              <img
+                class="avatar-thumbnail"
+                src="{{notification.senderAvatarID | avatarFormatter: true}}"
+              />
+              <img
+                *ngIf="notification.status == 'NEW'"
+                class="notification active-img"
+                src="assets/images/notification.png"
+              />
+              <h1 class="title">{{ notification.title }}</h1>
+              <div class="content">{{ notification.body }}</div>
+              <span class="date">{{ notification.date | dateFormatter }}</span>
+            </a>
+          </li>
+        </ul>
+
+        <div *ngIf="!notifications || notifications.length == 0">
+          <img
+            src="assets/images/avatars_group.png"
+            class="img-fluid img-center"
+          />
+          <a
+            href="javascript:void(0);"
+            (click)="refreshHandler()"
+            class="btn-primary btn-try-again"
+            >TRY AGAIN</a
+          >
+        </div>
+      </div>
+      <div class="overviewTab" #overviewTabContent>
+        <div
+          *ngIf="
+            newsFeeds &&
+            newsFeeds.monthlyTopUsers &&
+            newsFeeds.monthlyTopUsers.length > 0
+          "
+        >
+          <div class="list-title">
+            Highest number of medals collected this month
+          </div>
+          <ul class="monthlyTopUsers">
+            <li
+              *ngFor="let user of newsFeeds.monthlyTopUsers; let index = index"
+            >
+              <a href="javascript:void(0);" (click)="viewProfile(user.profile)">
+                <img
+                  class="avatar-thumbnail"
+                  src="{{user.profile.userInfo?.avatarId | avatarFormatter: true}}"
+                />
+                <div>
+                  <h1 class="title">{{ user.profile.userInfo?.nickname }}</h1>
+                  <div class="fullName">
+                    {{ user.profile.firstName + ' ' + user.profile.lastName }}
+                  </div>
+                </div>
+                <div class="medals-Count">
+                  Number of Medals : {{ user.awarderdMedalsCount }}
+                </div>
+                <span class="rank">0{{ index + 1 }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          *ngIf="
+            newsFeeds &&
+            newsFeeds.monthlyTopAwardedMedals &&
+            newsFeeds.monthlyTopAwardedMedals.length > 0
+          "
+        >
+          <div class="list-title">New Medals awarded this month</div>
+          <ul class="monthlyTopAwardedMedals">
+            <li
+              *ngFor="
+                let topMedal of newsFeeds.monthlyTopAwardedMedals;
+                let index = index
+              "
+            >
+              <img
+                class="medal-thumbnail"
+                src="{{topMedal.medal.id| medalFormatter: true: false}}"
+                title="{{medalsDict[topMedal.medal.id].description}}"
+              />
+              <div class="winners">
+                <div *ngFor="let winner of topMedal.winners">{{ winner }}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          *ngIf="
+            !newsFeeds ||
+            !newsFeeds.monthlyTopUsers ||
+            !newsFeeds.monthlyTopAwardedMedals ||
+            (newsFeeds.monthlyTopUsers.length == 0 &&
+              newsFeeds.monthlyTopAwardedMedals.length == 0)
+          "
+        >
+          <img
+            src="assets/images/avatars_group.png"
+            class="img-fluid img-center"
+          />
+          <a
+            href="javascript:void(0);"
+            (click)="refreshHandler()"
+            class="btn-primary btn-try-again"
+            >TRY AGAIN</a
+          >
+        </div>
+      </div>
+      <div class="modal-container" #notificationDetailsModal>
+        <div class="modal" *ngIf="selectedNotification">
+          <div class="modal-body">
+            <h1 class="title">Notification</h1>
+            <img
+              src="{{selectedNotification.senderAvatarID | avatarFormatter}}"
+              class="avatar"
+            />
+            <div class="message-from">
+              message {{ selectedTabKey == 'INBOX' ? 'from' : 'to' }}
+              <span class="user">{{ selectedNotification.title }}</span>
+            </div>
+            <p class="details">{{ selectedNotification.body }}</p>
+            <div class="actions">
+              <a
+                href="javascript:void(0);"
+                (click)="closeModal(notificationDetailsModal)"
+                class="btn-secondary"
+              >
+                CLOSE
+              </a>
+              <a
+                href="javascript:void(0);"
+                (click)="deleteInboxSentNotification(selectedNotification)"
+                class="btn-secondary"
+              >
+                DELETE
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal-backdrop"
+          (click)="closeModal(notificationDetailsModal)"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

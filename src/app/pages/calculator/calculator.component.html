@@ -1,0 +1,164 @@
+<div class="calculator-page">
+  <div class="page-content">
+    <div class="section-quarterly-yearly">
+      <div class="section-quarterly-yearly-title">
+        How far you are from reaching your target progress and incentive
+      </div>
+      <div class="tabs-buttons">
+        <a
+          href="javascript:void(0);"
+          class="btn-secondary active"
+          (click)="showQuarterlyYearlyTab(quarterlyTabButton, 'Q')"
+          #quarterlyTabButton
+          >QUARTERLY</a
+        >
+        <a
+          href="javascript:void(0);"
+          class="btn-secondary"
+          (click)="showQuarterlyYearlyTab(yearlyTabButton, 'Y')"
+          #yearlyTabButton
+          >YEARLY</a
+        >
+      </div>
+      <div class="tabs-content">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="250" width="250">
+            <circle
+              cx="125"
+              cy="125"
+              r="125"
+              fill="#fff"
+              stroke-width="0"
+            ></circle>
+            <!--
+              A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+              document.getElementById("achievedPercentPath").setAttribute("d",`M 125 30
+                    A 95 95 0 0 1 125 220`)
+            -->
+            <path
+              id="achievedPercentPath"
+              d="M 125 30 
+                  A 95 95 0 1 1 125 30"
+              stroke="#ff7260"
+              stroke-width="10"
+              stroke-linecap="round"
+              fill="none"
+            ></path>
+            <circle
+              cx="125"
+              cy="125"
+              r="85"
+              fill="#fff"
+              stroke-width="0"
+            ></circle>
+            <circle
+              cx="125"
+              cy="125"
+              r="70"
+              fill="#f7f7f7"
+              stroke-width="0"
+            ></circle>
+            <path
+              d="M 85 105
+              L 165 105
+              L 165 145
+              L 85 145"
+              stroke-width="0"
+              fill="#ff7260"
+            ></path>
+            <text
+              alignment-baseline="baseline"
+              x="125"
+              y="125"
+              text-anchor="middle"
+            >
+              <tspan x="125" y="135" dy="-0.18em" fill="#fff">
+                {{ salesInfo.achievedPercent }} %
+              </tspan>
+            </text>
+            Sorry, your browser does not support inline SVG.
+          </svg>
+          <div class="total-sales">
+            &#x20a6; {{ salesInfo.achievedCurrency }} out of &#x20a6;
+            {{ salesInfo.targetCurrency }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-forecast">
+      <div class="section-forecast-title">FORECAST</div>
+      <div class="tabs-buttons">
+        <a
+          href="javascript:void(0);"
+          class="btn-secondary active"
+          (click)="showForecastTab(transactionSaleTabButton, 'TRANS')"
+          #transactionSaleTabButton
+          >Transaction Sale</a
+        >
+        <a
+          href="javascript:void(0);"
+          class="btn-secondary"
+          (click)="showForecastTab(oneOffSaleTabButton, 'ONE_OFF')"
+          #oneOffSaleTabButton
+          >One Off Sale</a
+        >
+      </div>
+      <div class="section-forecast-subtitle">
+        Fill in the information and calculate your target progress and incentive
+      </div>
+      <div class="tabs-content">
+        <div>
+          <form class="form-calculate-transaction-sale">
+            <input
+              type="text"
+              id="feeInputValue" name="feeInputValue"
+              [(ngModel)]="forecastInfo.feeInputValue"
+              [placeholder]="forecastInfo.feeInputPlaceholder"
+            />
+            <input
+              type="text"
+              id="estimatedVolumeValue" name="estimatedVolumeValue"
+              [(ngModel)]="forecastInfo.estimatedVolumeValue"
+              [placeholder]="forecastInfo.estimatedVolumePlaceholder"
+            />
+            <a
+              [ngClass]="{ disabled: isConnecting }"
+              href="javascript:void(0);"
+              (click)="calculate()"
+              class="btn-primary btn-calculate"
+              >CALCULATE</a
+            >
+          </form>
+        </div>
+      </div>
+      <div class="section-forecast-note">
+        The calculated incentive is only an estimate based on your input. <br />
+        The real incentive is dependents on the actual realized figures.
+      </div>
+    </div>
+    <div class="modal-container" #calculatedIncentiveModal>
+      <div class="modal">
+        <div class="modal-body">
+          <div class="description">
+            For the planned negotiated price <br />
+            <span>YOUR EFFECTIVE INCENTIVE WILL BE</span>
+          </div>
+          <div class="calculated-value">
+            <span> &#x20a6; {{ effectiveIncentive }}</span>
+          </div>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(calculatedIncentiveModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        (click)="closeModal(calculatedIncentiveModal)"
+      ></div>
+    </div>
+  </div>
+</div>

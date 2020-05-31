@@ -1,0 +1,72 @@
+<div class="page-container" [@routerAnimation]="getRouteAnimation(route)">
+  <div class="page-header-container">
+    <app-header [title]="title" *ngIf="!useCustomHeader"></app-header>
+    <app-custom-header
+      [title]="title"
+      [canBack]="canBack"
+      *ngIf="useCustomHeader"
+    ></app-custom-header>
+    <div
+      class="spinner-wrapper"
+      *ngIf="isConnectingToServer || currentComponent?.refreshHandler"
+    >
+      <div class="spinner" *ngIf="isConnectingToServer"></div>
+      <a
+        *ngIf="!isConnectingToServer && currentComponent?.refreshHandler"
+        href="javascript:void(0);"
+        (click)="refresh()"
+        class="refresh"
+      >
+        <img src="assets/images/refresh.png" class="medal-image" />
+      </a>
+    </div>
+  </div>
+  <router-outlet
+    #route="outlet"
+    (activate)="onRouteActivate($event)"
+  ></router-outlet>
+  <div class="notification-modal">
+    <div class="modal-container" #notificationDetailsModal>
+      <div class="modal" *ngIf="currentNotification">
+        <div class="modal-body">
+          <img
+            src="{{currentNotification.avatarId | avatarFormatter}}"
+            class="medal-image"
+          />
+          <h1 class="title">{{ currentNotification.title }}</h1>
+          <p class="description">{{ currentNotification.content }}</p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(notificationDetailsModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        (click)="closeModal(notificationDetailsModal)"
+      ></div>
+    </div>
+  </div>
+
+  <div class="error-modal">
+    <div class="modal-container" #errorModal>
+      <div class="modal" *ngIf="errorMessage">
+        <div class="modal-body">
+          <h1 class="title">ERROR</h1>
+          <p class="description">{{ errorMessage }}</p>
+          <a
+            href="javascript:void(0);"
+            (click)="closeModal(errorModal)"
+            class="icon-close"
+          >
+            <img src="assets/images/close.png" class="img-fluid" />
+          </a>
+        </div>
+      </div>
+      <div class="modal-backdrop" (click)="closeModal(errorModal)"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+@import '../../../../styles.scss';
+.page-header {
+  text-align: center;
+  border-bottom: $fourth-color solid 1px;
+  background-color: $eighth-color;
+  a.icon-back {
+    display: block;
+    float: left;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    margin-left: 15px;
+    &:active {
+      border: $primary-color solid 1px;
+    }
+    img {
+      width: 22px;
+      height: 35px;
+    }
+  }
+}
